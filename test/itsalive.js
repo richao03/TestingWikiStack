@@ -23,8 +23,10 @@ describe("simple confirmation", function() {
 // });
 
 describe("calling forEach", function() {
+  //declare variable before anything else
   var arr, doit;
     beforeEach(function() {
+      //here we can assign variables previously declared, for each following test
         arr = [1, 2, 3];
         doit = function(num) {
             return num * 2
