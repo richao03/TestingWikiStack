@@ -5,7 +5,6 @@ var db = new Sequelize('postgres://localhost:5432/wikistack', {
     logging: false
 });
 
-//first argument for define is always the name, second is the schema, third is all configurations (getters, hooks, )
 var Page = db.define('page', {
     title: {
         type: Sequelize.STRING,
@@ -43,15 +42,7 @@ var Page = db.define('page', {
 
         }
     }
-    //fullName : {
-        // type:sequelize.VIRTUAL,
-        // set: function (fullName){
-        //     this.firstName = fullName.split(" ")[0]
-        //     this.lastName = fullName.split(" ")[1]
-        // }
-    //}
 }, {
-    //VIRTUAL via getter method, available in the 3rd argument to db.define
     getterMethods: {
         route: function () {
             return '/wiki/' + this.urlTitle;
@@ -86,8 +77,7 @@ var Page = db.define('page', {
         }
     }
 });
-//a hook is a function u can attach to different times of a function?
-//what are hooks and what are bulk hooks?
+
 Page.hook('beforeValidate', function (page) {
     if (page.title) {
         page.urlTitle = page.title.replace(/\s/g, '_').replace(/\W/g, '');
@@ -96,8 +86,6 @@ Page.hook('beforeValidate', function (page) {
     }
 });
 
-
-//creating users table
 var User = db.define('user', {
     name: {
         type: Sequelize.STRING,
@@ -109,6 +97,8 @@ var User = db.define('user', {
         allowNull: false
     }
 });
+
+
 
 Page.belongsTo(User, {
     as: 'author'

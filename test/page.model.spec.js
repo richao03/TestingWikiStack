@@ -17,30 +17,21 @@ describe( 'Page Model', function () {
   var page;
   beforeEach(function(){
     page = Page.build({
-      title: 'title',
-      content: 'content'
-    });
+      content: "content"
+     });
   })
 
   describe('Errors on fields', function (){
 
     it('Returns an error if no title', function (done) {
-      // Page.build();
-      page.save().then(function(){
-        console.log('in the promise');
-        done();
-      }).catch(function(err){
-        console.error(err.message);
-        expect(err.message).to.match(/title cannot be null/);
-        done()
-      })
-    });
-
-    xit('Returns an error if no urlTitle', function () {
 
     });
 
-    xit('Returns an error if no content', function () {
+    xit('Returns an error if no urlTitle', function (done) {
+
+    });
+
+    xit('Returns an error if no content', function (done) {
 
     });
   });
