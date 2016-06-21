@@ -23,9 +23,10 @@ describe("simple confirmation", function() {
 // });
 
 describe("calling forEach", function() {
+  var arr, doit;
     beforeEach(function() {
-        var arr = [1, 2, 3];
-        function doit(num) {
+        arr = [1, 2, 3];
+        doit = function(num) {
             return num * 2
         }
     });
@@ -37,6 +38,7 @@ describe("calling forEach", function() {
         }),
 
         it("preforms function on each element", function() {
+            arr = arr.map(doit)
              expect(arr).to.eql([2,4,6]);
         })
 
