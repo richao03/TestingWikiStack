@@ -83,6 +83,67 @@ describe('Page Model', function() {
         });
     });
 
+    describe("Validation tests", function() {
+        var page3
+        // var page4
+        beforeEach(function() {
+            // page4 = Page.build({
+            //     title: "another title",
+            //     // urlTitle:"/wiki/another_title",
+            //     content: "some extra content"
+            // })
+
+            page3 = Page.build({})
+        })
+        it("Validates title", function(done) {
+            page3.validate()
+                .then(function(validation) {
+                    expect(validation.errors[0].message).to.equal("title cannot be null")
+                        // console.log(validation)
+                    done();
+                })
+
+        })
+
+        it("Validates urlTitle", function(done) {
+            page3.validate()
+                .then(function(validation) {
+                    expect(validation.errors[1].message).to.equal("urlTitle cannot be null")
+                        // console.log(validation)
+                    done();
+                })
+
+        })
+
+        it("Validates content", function(done) {
+            page3.validate()
+                .then(function(validation) {
+                    expect(validation.errors[2].message).to.equal("content cannot be null")
+                        // console.log(validation)
+                    done();
+                })
+
+        })
+
+        // it("Validates everything", function(done) {
+        //     var page4 = Page.build({
+        //         title: "another title",
+        //         // urlTitle:"/wiki/another_title",
+        //         content: "some extra content"
+        //     })
+        //     return page4.validate()
+        //         .then(function(validation) {
+        //             console.log(validation)
+        //             expect(validation).to.equal(null)
+        //                 // console.log(validation)
+        //             done();
+        //         }).catch(done)
+
+        // })
+
+    })
+
+
 
 
 
