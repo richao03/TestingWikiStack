@@ -21,14 +21,15 @@ describe('Page Model', function() {
                 tags: ["one tag", "two tags", "three"]
             })
             // .then (function (){
-        // })
-        // .catch(done)
+            // })
+            // .catch(done)
     })
 
 
     describe('Testing Properties', function() {
 
         it('Returns no error if title is present', function() {
+
             expect(page.title).to.equal("THIS IS TITLE!")
         });
 
@@ -50,7 +51,7 @@ describe('Page Model', function() {
         });
         describe('Class Methods: findByTag', function() {
             var page2;
-            beforeEach(function () {
+            beforeEach(function() {
                 page2 = Page.build({
                     title: 'TitlE2',
                     content: 'Content right here',
@@ -58,6 +59,7 @@ describe('Page Model', function() {
                 })
             })
             it('returns all entries containing one tag', function(done) {
+
                 Page.findByTag('one tag').then(function(pages) {
                     expect(pages).to.have.lengthOf(2);
                     done();
@@ -71,12 +73,17 @@ describe('Page Model', function() {
                 });
             });
 
-        });
-        describe('instance method: findSimilar', function() {
-            xit('returns all pages with similar ID or Tag', function() {
-
+            it('returns all pages with similar ID or Tag', function(done) {
+                page2.id = 3
+                page2.findSimilar().then(function(pages) {
+                    expect(pages).to.have.lengthOf(1);
+                    done();
+                })
             });
         });
     });
+
+
+
 
 });
