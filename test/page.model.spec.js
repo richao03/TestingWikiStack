@@ -13,7 +13,7 @@ var DatabaseEditor = require('../models');
 var Page = require('../models').Page
 var User = DatabaseEditor.User;
 var page
-describe('Page Model', function() {
+xdescribe('Page Model', function() {
     beforeEach(function() {
         page = Page.build({
                 title: "THIS IS TITLE!",
