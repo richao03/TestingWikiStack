@@ -21,7 +21,6 @@ describe('Page Model', function() {
                 tags: ["one tag", "two tags", "three"]
             })
             // .then (function (){
-
         // })
         // .catch(done)
     })
@@ -50,15 +49,28 @@ describe('Page Model', function() {
             });
         });
         describe('Class Methods: findByTag', function() {
-            it('returns all entries containing tag', function(done) {
-
-                Page.findByTag('two tags').then(function(pages) {
-                  console.log(pages.dataValues)
-                    expect(pages.dataValues).to.have.lengthOf(1)
+            var page2;
+            beforeEach(function () {
+                page2 = Page.build({
+                    title: 'TitlE2',
+                    content: 'Content right here',
+                    tags: ["one tag"]
+                })
+            })
+            it('returns all entries containing one tag', function(done) {
+                Page.findByTag('one tag').then(function(pages) {
+                    expect(pages).to.have.lengthOf(2);
                     done();
                 });
-
             });
+
+            it('returns all entries containing one tag', function(done) {
+                Page.findByTag('two tags').then(function(pages) {
+                    expect(pages).to.have.lengthOf(1);
+                    done();
+                });
+            });
+
         });
         describe('instance method: findSimilar', function() {
             xit('returns all pages with similar ID or Tag', function() {
